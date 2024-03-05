@@ -1,0 +1,29 @@
+---
+const languages = [
+  {
+    link: "/pl",
+    code: "pl",
+  },
+  {
+    link: "/fr",
+    code: "fr",
+  },
+  {
+    link: "/en",
+    code: "en",
+  },
+];
+---
+
+<div class="flex">
+  {
+    languages.map((language, index) => (
+      <a
+        href={language.link}
+        class="px-6 py-3 rounded-full text-sm font-medium border hover:bg-brand-gray hover:text-brand-black transition-colors"
+      >
+        {language.code}
+      </a>
+    ))
+  }
+</div>

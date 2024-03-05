@@ -1,0 +1,11 @@
+---
+import VideoCarousel from '@/components/organisms/VideoCarousel.tsx';
+import Layout from '@/layouts/Layout.astro';
+import FullPageScroll from '@/components/atoms/FullPageScroll.astro';
+---
+
+<Layout title="Welcome to Astro.">
+  <FullPageScroll>
+    <VideoCarousel client:idle />
+  </FullPageScroll>
+</Layout>

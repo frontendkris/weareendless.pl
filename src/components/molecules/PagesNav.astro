@@ -1,0 +1,33 @@
+---
+const navLinks = [
+  {
+    link: "/reel",
+    text: "Reel",
+  },
+  {
+    link: "/zespol",
+    text: "Zespół",
+  },
+  {
+    link: "/kontakt",
+    text: "Kontakt",
+  },
+];
+---
+
+<div class="flex">
+  {
+    navLinks.map((link, index) => (
+      <a
+        href={link.link}
+        class:list={[
+          "px-16 py-3 text-sm font-medium border-r border-y border-brand-gray lowercase hover:bg-brand-gray hover:text-brand-black transition-colors",
+          { "rounded-l-full border-l": index === 0 },
+          { "rounded-r-full": index === navLinks.length - 1 },
+        ]}
+      >
+        {link.text}
+      </a>
+    ))
+  }
+</div>

@@ -1,0 +1,19 @@
+---
+---
+<div id="fullpagescroll" class="w-full h-full">
+  <slot />
+</div>
+
+<script type="module">
+  import fullpage from 'fullpage.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    fullpage('#fullpagescroll', {
+      scrollOverflow: true,
+      autoScrolling: false,
+      scrollHorizontally: false,
+      keyboardScrolling: true,
+      lazyLoading: true,
+    });
+  });
+</script>
