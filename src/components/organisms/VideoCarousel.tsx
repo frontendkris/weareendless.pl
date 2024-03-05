@@ -11,9 +11,7 @@ const heroUrl = "https://res.cloudinary.com/drxgmtvxx/video/upload/v1709655262/y
 
 const videoUrls = [
   'https://res.cloudinary.com/drxgmtvxx/video/upload/v1709609785/djq3clekeepqqwtzlqjq.mp4',
-  'https://res.cloudinary.com/drxgmtvxx/video/upload/v1709616494/rykraqmdb5zhk1hlzfrt.mp4',
-  'https://res.cloudinary.com/drxgmtvxx/video/upload/v1709609785/djq3clekeepqqwtzlqjq.mp4',
-  'https://res.cloudinary.com/drxgmtvxx/video/upload/v1709616494/rykraqmdb5zhk1hlzfrt.mp4',
+  'https://weareendless.pl/wp-content/uploads/2022/12/ENDLESS_reel_v03_1240x726.mp4',
 ];
 
 const VideoSlider: React.FC = () => {

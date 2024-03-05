@@ -23,7 +23,7 @@ const VideoSlide: React.FC<VideoProps> = ({ src, isActive }) => {
     <div className={`flex w-auto h-auto max-h-full m-auto rounded-[50px] shadow-md bg-black border border-brand-gray overflow-hidden aspect-video ${isVisible ? "opacity-0 fade-in !animate-duration-200 !animate-delay-200" : "opacity-100 fade-out !animate-duration-200"}`}>
       <video
         ref={videoRef}
-        className="w-full h-full object-contain border-none"
+        className="w-full h-full object-cover border-none"
         loop autoPlay
       >
         <source src={src} type="video/mp4" />
