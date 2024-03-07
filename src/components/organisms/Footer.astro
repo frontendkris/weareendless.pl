@@ -1,0 +1,30 @@
+---
+import { Picture } from "astro:assets";
+import topographyImg from "src/assets/topography.png";
+---
+
+<footer
+  class="scroll-section footer flex font-gothic-717 bg-transparent -mt-10"
+>
+  <div
+    class="flex flex-col items-center justify-center relative container h-full w-full overflow-hidden rounded-t-3xl bg-brand-black z-10"
+  >
+    <Picture
+      src={topographyImg}
+      width={topographyImg.width}
+      height={topographyImg.height}
+      alt=""
+      formats={["avif", "webp", "jpeg"]}
+      fallbackFormat="png"
+      loading="lazy"
+      class="absolute inset-0 w-full h-full z-0 mix-blend-hard-light scale-110 opacity-80"
+    />
+    <div class="flex justify-start items-center w-full h-full gap-16">
+      <div class="flex flex-col gap-4 text-5xl leading-none w-full uppercase">
+        <p>Masz pytania? Napisz lub zadzwoń!</p>
+        <p>+48 513 129 761</p>
+        <p>hello@weareendless.pl</p>
+      </div>
+    </div>
+  </div>
+</footer>

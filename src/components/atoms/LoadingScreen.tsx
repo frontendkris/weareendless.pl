@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 type LoadingScreenProps = {
   setClicked: (clicked: boolean) => void;
@@ -12,7 +12,9 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ setClicked }) => {
     if (loadingProgress < 100) {
       const randomIncrement = Math.floor(Math.random() * 10) + 1;
       const timer = setTimeout(() => {
-        setLoadingProgress(prevProgress => Math.min(prevProgress + randomIncrement, 100));
+        setLoadingProgress((prevProgress) =>
+          Math.min(prevProgress + randomIncrement, 100)
+        );
       }, 30);
       return () => clearTimeout(timer);
     } else {
@@ -23,8 +25,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ setClicked }) => {
   return (
     <div className="-translate-y-[96px]">
       {loadingComplete ? (
-        <div 
-          onClick={() => setClicked(true)} 
+        <div
+          onClick={() => setClicked(true)}
           className="px-12 py-4 border rounded-full text-xl border-brand-gray cursor-pointer hover:bg-brand-gray hover:text-brand-black transition-colors animate-fade-up animate-once animate-ease-out"
         >
           Let's begin!

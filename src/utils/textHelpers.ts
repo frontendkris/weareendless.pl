@@ -15,3 +15,8 @@ export function truncateText(portableText: PortableTextBlock[], maxLength: numbe
   }
   return plainText;
 }
+
+export const isSpecialCharacter = (char: string): boolean => {
+  const regExp = /^[A-Za-z]$/;
+  return char !== ' ' && !regExp.test(char);
+}

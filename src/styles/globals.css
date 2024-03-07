@@ -2,37 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Lexend Variable', sans-serif;
-}
+@layer base {
+  html,
+  body {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply pt-32 bg-brand-black text-brand-gray font-gothic-718;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lalezar', system-ui;
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-.fade-in {
-  animation: fade-in 0.5s ease-out forwards;
-}
-
-.fade-out {
-  animation: fade-out 0.5s ease-out forwards;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-gothic-718;
+  }
 }
 
 @layer components {
-  .section { height: calc(100vh - 144px); }
+  .scroll-section {
+    min-height: 150vh;
+    min-height: 150dvh;
+    @apply flex items-center;
+  }
+
+  .scroll-section.video-carousel,
+  .scroll-section.footer {
+    @apply h-[calc(100dvh-8rem)] min-h-[calc(100dvh-8rem)];
+  }
+
+  .container {
+    @apply w-full max-w-full mx-auto px-2 sm:px-3 md:px-4 lg:px-8 xl:px-16;
+  }
+
+  .swiper-container {
+    @apply !flex flex-col items-center justify-between h-full;
+  }
+
+  .swiper-container .swiper-wrapper {
+    max-height: calc(100vh - 144px - 46px - 32px - 32px);
+  }
 
   .video-slide {
-    max-height: calc(100vh - 144px - 46px - 32px - 32px);
-    @apply px-16;
+    @apply container;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  .fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+
+  .fade-out {
+    animation: fade-out 0.5s ease-out forwards;
   }
 }

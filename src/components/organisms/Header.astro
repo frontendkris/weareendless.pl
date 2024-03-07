@@ -1,27 +1,29 @@
 ---
 import { Picture } from "astro:assets";
-import logoSrc from "@/assets/logo.png";
-import Container from "@/components/atoms/Container.astro";
-import LanguagesNav from "@/components/molecules/LanguagesNav.astro";
-import PagesNav from "@/components/molecules/PagesNav.astro";
+import logoSrc from "src/assets/logo.png";
+import LanguagesNav from "src/components/molecules/LanguagesNav.astro";
+import PagesNav from "src/components/molecules/PagesNav.astro";
 ---
 
-<header class="fixed top-0 inset-x-0 w-full bg-brand-black z-10">
-  <Container>
-    <div class="flex items-center justify-between h-32 mx-auto md:flex-row">
-      <Picture
-        src={logoSrc}
-        alt="Endless logo"
-        width={logoSrc.width}
-        height={logoSrc.height}
-        loading="eager"
-        formats={["avif", "webp", "jpeg"]}
-        fallbackFormat="png"
-      />
-      <div class="flex items-center">
-        <PagesNav />
-        <LanguagesNav />
-      </div>
-    </div>
-  </Container>
+<header class="navbar mix-blend-difference">
+  <Picture
+    src={logoSrc}
+    alt="Endless logo"
+    width={logoSrc.width}
+    height={logoSrc.height}
+    loading="eager"
+    formats={["avif", "webp", "jpeg"]}
+    fallbackFormat="png"
+    class=""
+  />
+  <div class="flex items-center">
+    <PagesNav />
+    <LanguagesNav />
+  </div>
 </header>
+
+<style>
+  .navbar {
+    @apply fixed top-0 inset-x-0 m-auto flex items-center justify-between container h-32 bg-transparent z-10;
+  }
+</style>

@@ -1,11 +1,14 @@
 ---
-import VideoCarousel from '@/components/organisms/VideoCarousel.tsx';
-import Layout from '@/layouts/Layout.astro';
-import FullPageScroll from '@/components/atoms/FullPageScroll.astro';
+import Layout from "src/layouts/Layout.astro";
+import VideoCarousel from "src/components/organisms/VideoCarousel";
+import ShuffleShowcase from "src/components/organisms/ShuffleShowcase.astro";
+import WeAreEndless from "src/components/organisms/WeAreEndless.astro";
+import White from "src/components/organisms/White.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <FullPageScroll>
-    <VideoCarousel client:idle />
-  </FullPageScroll>
+  <VideoCarousel client:idle />
+  <ShuffleShowcase />
+  <WeAreEndless />
+  <White />
 </Layout>

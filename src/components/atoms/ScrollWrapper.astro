@@ -1,0 +1,61 @@
+---
+
+---
+
+<div class="scroll-wrapper no-scrollbar">
+  <slot />
+</div>
+
+<style is:global>
+  .scroll-wrapper {
+    height: 100vh;
+    height: 100dvh;
+    @apply overflow-y-scroll snap-y snap-mandatory pt-32 scroll-pt-32 scroll-smooth;
+  }
+
+  .scroll-section {
+    @apply h-full snap-start snap-always;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    const scrollWrapper = document.querySelector(".scroll-wrapper");
+    let isThrottled = false;
+
+    scrollWrapper?.addEventListener("wheel", (event: Event) => {
+      const e = event as WheelEvent; // Type assertion tutaj
+      e.preventDefault();
+
+      if (isThrottled) return;
+      isThrottled = true;
+
+      setTimeout(() => {
+        isThrottled = false;
+      }, 750);
+
+      const deltaY = e.deltaY;
+      const direction = deltaY > 0 ? 1 : -1;
+
+      scrollToNextSection(direction);
+    });
+
+    function scrollToNextSection(direction: number) {
+      const sections = document.querySelectorAll(".scroll-section");
+      const currentSectionIndex = [...sections].findIndex((section) => {
+        const rect = section.getBoundingClientRect();
+        return rect.top >= 0 && rect.top < window.innerHeight;
+      });
+
+      let nextSectionIndex = currentSectionIndex + direction;
+      nextSectionIndex = Math.max(
+        0,
+        Math.min(sections.length - 1, nextSectionIndex)
+      );
+
+      if (sections[nextSectionIndex]) {
+        sections[nextSectionIndex].scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  });
+</script>

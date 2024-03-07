@@ -1,17 +1,18 @@
-import React, { useCallback, useEffect, useId, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import VideoSlide from '@/components/atoms/VideoSlide';
-import { Navigation, EffectFade, Keyboard } from 'swiper/modules';
-import VideoHome from '../atoms/VideoHome';
-import Arrow from '../Icons/Arrow';
+import React, { useCallback, useEffect, useId, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import VideoSlide from "@/components/atoms/VideoSlide";
+import { Navigation, EffectFade, Keyboard } from "swiper/modules";
+import VideoHome from "../atoms/VideoHome";
+import Arrow from "../Icons/Arrow";
 
-const heroUrl = "https://res.cloudinary.com/drxgmtvxx/video/upload/v1709655262/yws4fx4lqnaldscwblxz.mp4";
+const heroUrl: string =
+  "https://res.cloudinary.com/drxgmtvxx/video/upload/v1709655262/yws4fx4lqnaldscwblxz.mp4";
 
-const videoUrls = [
-  'https://res.cloudinary.com/drxgmtvxx/video/upload/v1709609785/djq3clekeepqqwtzlqjq.mp4',
-  'https://weareendless.pl/wp-content/uploads/2022/12/ENDLESS_reel_v03_1240x726.mp4',
+const videoUrls: string[] = [
+  "https://res.cloudinary.com/drxgmtvxx/video/upload/v1709609785/djq3clekeepqqwtzlqjq.mp4",
+  "https://weareendless.pl/wp-content/uploads/2022/12/ENDLESS_reel_v03_1240x726.mp4",
 ];
 
 const VideoSlider: React.FC = () => {
@@ -20,7 +21,7 @@ const VideoSlider: React.FC = () => {
   const swiperRef = React.useRef<any>(null);
 
   useEffect(() => {
-    console.log(activeIndex)
+    console.log(activeIndex);
   }, [activeIndex]);
 
   const handlePrev = useCallback(() => {
@@ -34,33 +35,37 @@ const VideoSlider: React.FC = () => {
   }, []);
 
   return (
-    <div className="section relative flex items-center justify-center">
+    <div className="scroll-section video-carousel">
       <Swiper
         ref={swiperRef}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper
+        onSwiper={(swiper: any) => {
+          swiperRef.current = swiper;
         }}
         modules={[Navigation, Keyboard, EffectFade]}
         // effect='fade'
-        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+        onSlideChange={(swiper: any) => setActiveIndex(swiper.activeIndex)}
         spaceBetween={0}
         slidesPerView={1}
-        className="w-full h-full"
+        className="swiper-container"
         keyboard={{ enabled: true }}
       >
         <SwiperSlide key={`${id}-home-slide`} className="video-slide">
-          <VideoHome src={heroUrl} isActive={0 === activeIndex}/>
+          <VideoHome src={heroUrl} isActive={0 === activeIndex} />
         </SwiperSlide>
-        {
-          videoUrls.map((url, index) => (
-            <SwiperSlide key={`${id}-${index}`} className="video-slide">
-              <VideoSlide src={url} isActive={index + 1 === activeIndex} />
-            </SwiperSlide>
-          ))
-        }
-        <div className='flex items-center justify-between w-auto h-max absolute bottom-8 left-16 right-16 z-10'>
-          <Arrow className={`opacity-0 transition-opacity ${activeIndex === 0 ? "pointer-events-none" : "fade-in"} rotate-180 cursor-pointer !animate-duration-200`} onClick={handlePrev} />
-          <Arrow className={`opacity-0 transition-opacity ${activeIndex === videoUrls.length ? "pointer-events-none" : "fade-in"} cursor-pointer !animate-duration-200`} onClick={handleNext} />
+        {videoUrls.map((url, index) => (
+          <SwiperSlide key={`${id}-${index}`} className="video-slide">
+            <VideoSlide src={url} isActive={index + 1 === activeIndex} />
+          </SwiperSlide>
+        ))}
+        <div className="flex items-center justify-between container h-32 min-h-max z-10">
+          <Arrow
+            className={`opacity-0 transition-opacity ${activeIndex === 0 ? "pointer-events-none" : "fade-in"} rotate-180 cursor-pointer !animate-duration-200`}
+            onClick={handlePrev}
+          />
+          <Arrow
+            className={`opacity-0 transition-opacity ${activeIndex === videoUrls.length ? "pointer-events-none" : "fade-in"} cursor-pointer !animate-duration-200`}
+            onClick={handleNext}
+          />
         </div>
       </Swiper>
     </div>

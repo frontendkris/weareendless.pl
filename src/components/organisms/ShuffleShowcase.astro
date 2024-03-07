@@ -1,0 +1,25 @@
+---
+import Mozaic from "src/components/molecules/Mozaic";
+import ImageWrapper from "src/components/atoms/ImageWrapper.astro";
+import actorImg from "src/assets/actor.png";
+import { Picture } from "astro:assets";
+---
+
+<div class="scroll-section container">
+  <div class="flex items-center justify-center gap-20 h-full w-full container">
+    <div class="">
+      <Mozaic client:idle />
+    </div>
+    <div class="">
+      <ImageWrapper className="h-[55dvh] max-w-3xl">
+        <Picture
+          class="w-full h-full object-cover overflow-hidden"
+          src={actorImg}
+          formats={["avif", "webp", "jpeg"]}
+          fallbackFormat="png"
+          alt="Actor portrait"
+        />
+      </ImageWrapper>
+    </div>
+  </div>
+</div>

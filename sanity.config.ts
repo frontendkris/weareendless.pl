@@ -1,11 +1,8 @@
-import dotenv from 'dotenv';
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
-import { schemaTypes } from "./schema";
-import { myStructure } from "./deskStructure";
-
-dotenv.config();
+import { schemaTypes } from "./sanity/schema";
+import { myStructure } from "./sanity/deskStructure";
 
 export default defineConfig({
   name: "endless",
@@ -15,8 +12,8 @@ export default defineConfig({
   plugins: [
     structureTool({
       structure: myStructure,
-    }), 
-    visionTool()
+    }),
+    visionTool(),
   ],
   schema: {
     types: schemaTypes,
