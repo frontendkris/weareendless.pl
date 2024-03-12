@@ -42,10 +42,10 @@ const Mozaic: React.FC = () => {
   );
   const [content, setContent] = useState<JSX.Element | null>(null);
   const lastUpdateTimeRef = useRef(Date.now());
-  const refreshRate = 500;
+  const refreshRate = 250;
 
   useEffect(() => {
-    updateContent();
+    scheduleUpdate();
   }, []);
 
   const getRandomImageSource = (usedImages: string[]): string => {
@@ -107,7 +107,7 @@ const Mozaic: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-full h-max m-0 text-white font-gothic-720 text-6xl">
+    <div className="flex flex-col gap-4 w-[430px] h-max m-0 text-white font-gothic-720 text-6xl">
       {content}
     </div>
   );

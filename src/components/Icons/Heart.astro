@@ -1,0 +1,51 @@
+---
+interface Props {
+  className: string;
+  color: "red" | "black";
+}
+
+const { color = "red", className = "w-10 h-auto" } = Astro.props as Props;
+
+const colors = {
+  red: {
+    heart: "#da0c16",
+    text: "#e3f3f3",
+  },
+  black: {
+    heart: "#0a0a0a",
+    text: "#da0c16",
+  },
+};
+---
+
+<svg
+  viewBox="0 0 210 150"
+  xml:space="preserve"
+  xmlns="http://www.w3.org/2000/svg"
+  class={`heart-icon ${className}`}
+>
+  <path
+    class="heart-body"
+    fill={`${colors[color].heart}`}
+    style={`fill-opacity:1; stroke-width:0`}
+    d="M90.709 23.417S73.965 0 45.867 0 0 23.556 0 40.425c0 16.868 1.024 23.182 45.867 65.378L90.709 148zM90.709 23.417S107.453 0 135.55 0s45.867 23.556 45.867 40.425c0 16.868-1.025 23.182-45.867 65.378L90.71 148z"
+    transform="translate(1.587 1)"></path>
+  <path
+    class="heart-letter"
+    fill={`${colors[color].text}`}
+    style={`fill-opacity:1; stroke-width:0`}
+    d="M131.335 1.725v50.038h75.49V40.425h-54.834v-8.628h35.125V21.691h-35.125v-9.613h54.834V1.725Z"
+    transform="translate(1.587 1)"></path>
+  <path
+    class="heart-body"
+    fill={`${colors[color].heart}`}
+    style={`fill-opacity:1; stroke-width:0`}
+    d="M90.709 23.417S73.965 0 45.867 0 0 23.556 0 40.425c0 16.868 1.024 23.182 45.867 65.378L90.709 148z"
+    transform="translate(1.587 1)"></path>
+</svg>
+
+<style>
+  .heart-icon path {
+    @apply transition-colors duration-300;
+  }
+</style>

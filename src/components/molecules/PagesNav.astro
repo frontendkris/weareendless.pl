@@ -1,7 +1,7 @@
 ---
 const navLinks = [
   {
-    link: "/reel",
+    link: "/?reel=1",
     text: "Reel",
   },
   {
@@ -9,8 +9,9 @@ const navLinks = [
     text: "Zespół",
   },
   {
-    link: "/kontakt",
+    link: "#kontakt",
     text: "Kontakt",
+    class: "scroll-bottom",
   },
 ];
 ---
@@ -21,9 +22,10 @@ const navLinks = [
       <a
         href={link.link}
         class:list={[
-          "px-16 py-3 text-sm font-medium border-r border-y border-brand-gray lowercase hover:bg-brand-gray hover:text-brand-black transition-colors",
+          "px-16 py-3 text-sm font-medium bordered-btn border-r border-y lowercase",
           { "rounded-l-full border-l": index === 0 },
           { "rounded-r-full": index === navLinks.length - 1 },
+          { "scroll-bottom": link.class },
         ]}
       >
         {link.text}
@@ -31,3 +33,9 @@ const navLinks = [
     ))
   }
 </div>
+
+<script type="module">
+  document.querySelector(".scroll-bottom").addEventListener("click", (e) => {
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+</script>

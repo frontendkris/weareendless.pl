@@ -3,27 +3,103 @@ import { Picture } from "astro:assets";
 import logoSrc from "src/assets/logo.png";
 import LanguagesNav from "src/components/molecules/LanguagesNav.astro";
 import PagesNav from "src/components/molecules/PagesNav.astro";
+import Heart from "src/components/Icons/Heart.astro";
 ---
 
-<header class="navbar mix-blend-difference">
-  <Picture
-    src={logoSrc}
-    alt="Endless logo"
-    width={logoSrc.width}
-    height={logoSrc.height}
-    loading="eager"
-    formats={["avif", "webp", "jpeg"]}
-    fallbackFormat="png"
-    class=""
-  />
-  <div class="flex items-center">
+<header class="navbar">
+  <a href="/" class="flex items-center justify-center"
+    ><Picture
+      src={logoSrc}
+      alt="Endless logo"
+      width={logoSrc.width}
+      height={logoSrc.height}
+      loading="eager"
+      formats={["avif", "webp", "jpeg"]}
+      fallbackFormat="png"
+      class=""
+    /></a
+  >
+  <div class="hidden lg:flex items-center">
     <PagesNav />
     <LanguagesNav />
+    <Heart color="red" className="h-7 w-auto ml-2" />
   </div>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    class="flex lg:hidden w-8 h-8 stroke-current"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 6h16M4 12h16M4 18h16"></path>
+  </svg>
 </header>
 
-<style>
+<style is:global>
   .navbar {
     @apply fixed top-0 inset-x-0 m-auto flex items-center justify-between container h-32 bg-transparent z-10;
   }
+
+  .bordered-btn {
+    @apply bg-brand-black hover:bg-brand-gray hover:text-brand-black text-brand-gray border border-brand-gray hover:border-brand-gray transition-all duration-500
+    max-md:border-none max-md:p-0;
+  }
+
+  .inverted .bordered-btn {
+    @apply bg-brand-gray hover:bg-brand-black text-brand-black hover:text-brand-gray border border-black hover:border-brand-black transition-all duration-300;
+  }
+
+  .inverted .heart-body {
+    @apply !fill-brand-black;
+  }
+  .inverted .heart-letter {
+    @apply !fill-brand-red;
+  }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const header: HTMLElement | null = document.querySelector(".navbar");
+
+    const sections: NodeListOf<HTMLElement> = document.querySelectorAll(
+      ".scroll-section:not(.ingnore-observer)"
+    );
+
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      threshold: 0.6,
+      rootMargin: "700px 0px 250px 0px",
+    };
+
+    const hasLightBackground = (element: HTMLElement): boolean =>
+      ["bg-brand-lightblue", "bg-brand-gray", "bg-white"].some((className) =>
+        element.classList.contains(className)
+      );
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        console.log(entry.intersectionRatio);
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const hasLightBg = hasLightBackground(target);
+          header?.classList.toggle("inverted", hasLightBg);
+        } else {
+          if (entry.intersectionRatio > 0.8) {
+            header?.classList.remove("inverted");
+          }
+        }
+      });
+    };
+
+    const observer: IntersectionObserver = new IntersectionObserver(
+      handleIntersection,
+      observerOptions
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  });
+</script>

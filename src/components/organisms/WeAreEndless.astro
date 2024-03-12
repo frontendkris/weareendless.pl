@@ -1,31 +1,26 @@
 ---
-import { Image } from "astro:assets";
-import heartImg from "src/assets/heart.png";
+import Heart from "src/components/Icons/Heart.astro";
 
 const text: string =
   "Wciąż odkrywamy nieznane, bo wierzymy, że tylko to co nowe i zaskakujące zapada w pamięć... na zawsze.\r\n\r\nOsobno tworzyliśmy kampanie, które na pewno znacie i zdobywaliśmy nagrody na festiwalach reklamowych w Polsce i za granicą. Dziś razem tworzymy Endless, zespół w którym nikt nie znalazł się przypadkiem.";
 ---
 
-<section class="scroll-section container font-gothic-717">
+<section
+  class="scroll-section we-are-endless-section container font-gothic-717"
+>
   <div
     class="flex flex-col items-center justify-center gap-20 h-full w-full xl:px-7"
   >
     <div class="flex justify-start items-center w-full gap-16">
       <span class="text-[9dvw] leading-none tracking-widest">We are</span>
       <div class="h-[1dvw] w-[16dvw] bg-brand-gray translate-y-[1dvw]"></div>
-      <Image
-        src={heartImg}
-        width={heartImg.width}
-        height={heartImg.height}
-        alt=""
-        class="w-[9dvw] h-auto translate-y-[10%]"
-      />
+      <Heart color="red" className="h-40 w-auto" />
     </div>
     <div class="flex justify-start items-center w-full gap-16">
       <div set:html={text} class="text-sm w-full whitespace-pre-wrap" />
-      <span class="text-[9dvw] leading-none tracking-widest min-w-max"
-        >endless</span
-      >
+      <span class="text-[9dvw] leading-none tracking-widest min-w-max">
+        endless
+      </span>
     </div>
   </div>
 </section>

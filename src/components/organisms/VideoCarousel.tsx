@@ -21,8 +21,13 @@ const VideoSlider: React.FC = () => {
   const swiperRef = React.useRef<any>(null);
 
   useEffect(() => {
-    console.log(activeIndex);
-  }, [activeIndex]);
+    const queryParameters = new URLSearchParams(window.location.search);
+    console.log(queryParameters);
+    if (queryParameters) {
+      const slideIndex = parseInt(queryParameters.get("reel") || "0");
+      swiperRef.current.slideTo(slideIndex, 300);
+    }
+  }, [swiperRef]);
 
   const handlePrev = useCallback(() => {
     if (!swiperRef.current) return;
@@ -35,7 +40,7 @@ const VideoSlider: React.FC = () => {
   }, []);
 
   return (
-    <div className="scroll-section video-carousel">
+    <div className="scroll-section ingnore-observer video-carousel">
       <Swiper
         ref={swiperRef}
         onSwiper={(swiper: any) => {

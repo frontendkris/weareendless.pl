@@ -1,0 +1,97 @@
+---
+import { Picture } from "astro:assets";
+import Layout from "src/layouts/Layout.astro";
+
+import portrait from "src/assets/portrait.jpg";
+---
+
+<Layout title="Welcome to Team.">
+  <div class="container pb-80 pt-[10dvh] animation-container">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-screen-xl mx-auto gap-x-20 gap-y-80"
+    >
+      {
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+          <div
+            class={`
+              flex flex-col items-center justify-start w-full max-w-md mx-auto gap-4
+              opacity-0 grid-item
+            `}
+          >
+            <div class="flex flex-col items-center justify-center w-full h-auto gap-3">
+              <Picture
+                src={portrait}
+                width={portrait.width}
+                height={portrait.height}
+                formats={["avif", "webp", "jpeg"]}
+                fallbackFormat="jpg"
+                alt=""
+                loading="eager"
+                class="w-full h-auto object-cover"
+              />
+              <div class="font-gothic-720 text-center uppercase">
+                <p class="text-2xl">Lorem Ipsum</p>
+                <p class="text-2xl">Lorem nostrud irure</p>
+              </div>
+            </div>
+            <p class="text-xs font-gothic-717">
+              Dolore mollit aliquip esse mollit amet sit consequat eiusmod
+              dolore occaecat mollit sint in id. Labore esse elit cupidatat
+              mollit ullamco deserunt aliquip proident id labore fugiat aliquip
+              proident nisi.
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .item-scroll-down {
+    animation: scrollDown linear forwards;
+    animation-timeline: view();
+    animation-range-start: 10%;
+    animation-range-end: 50%;
+  }
+
+  .item-scroll-up {
+    animation: scrollUp linear forwards;
+    animation-timeline: view();
+    animation-range-start: 10%;
+    animation-range-end: 50%;
+  }
+
+  @keyframes scrollDown {
+    from {
+      opacity: 0%;
+      transform: translateY(-50%);
+    }
+    to {
+      opacity: 100%;
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes scrollUp {
+    from {
+      opacity: 0%;
+      transform: translateY(50%);
+    }
+    to {
+      opacity: 100%;
+      transform: translateY(0%);
+    }
+  }
+
+  .grid-item {
+    @apply item-scroll-up;
+  }
+
+  /* desktop */
+  @media (min-width: 1024px) {
+    /* .grid-item:nth-of-type(3n + 2) {
+      @apply item-scroll-down;
+    } */
+  }
+</style>
