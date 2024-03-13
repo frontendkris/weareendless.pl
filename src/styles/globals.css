@@ -23,8 +23,8 @@
 
 @layer components {
   .scroll-section {
-    min-height: 150vh;
-    min-height: 150dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
     @apply flex items-center;
   }
 
@@ -34,7 +34,7 @@
   }
 
   .container {
-    @apply w-full max-w-full mx-auto px-2 sm:px-3 md:px-4 lg:px-8 xl:px-16;
+    @apply w-full max-w-full mx-auto px-4 sm:px-3 md:px-4 lg:px-8 xl:px-16;
   }
 
   .swiper-container {

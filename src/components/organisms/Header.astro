@@ -4,44 +4,39 @@ import logoSrc from "src/assets/logo.png";
 import LanguagesNav from "src/components/molecules/LanguagesNav.astro";
 import PagesNav from "src/components/molecules/PagesNav.astro";
 import Heart from "src/components/Icons/Heart.astro";
+import Hamburger from "src/components/Icons/Hamburger.astro";
 ---
 
 <header class="navbar">
-  <a href="/" class="flex items-center justify-center"
-    ><Picture
-      src={logoSrc}
-      alt="Endless logo"
-      width={logoSrc.width}
-      height={logoSrc.height}
-      loading="eager"
-      formats={["avif", "webp", "jpeg"]}
-      fallbackFormat="png"
-      class=""
-    /></a
-  >
-  <div class="hidden lg:flex items-center">
-    <PagesNav />
-    <LanguagesNav />
-    <Heart color="red" className="h-7 w-auto ml-2" />
+  <div class="container navbar-content">
+    <a href="/" class="flex items-center justify-center"
+      ><Picture
+        src={logoSrc}
+        alt="Endless logo"
+        width={logoSrc.width}
+        height={logoSrc.height}
+        loading="eager"
+        formats={["avif", "webp", "jpeg"]}
+        fallbackFormat="png"
+        class=""
+      /></a
+    >
+    <div class="hidden lg:flex items-center">
+      <PagesNav />
+      <LanguagesNav />
+      <Heart color="red" className="h-7 w-auto ml-2" />
+    </div>
+    <Hamburger />
   </div>
-
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    class="flex lg:hidden w-8 h-8 stroke-current"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M4 6h16M4 12h16M4 18h16"></path>
-  </svg>
 </header>
 
 <style is:global>
   .navbar {
-    @apply fixed top-0 inset-x-0 m-auto flex items-center justify-between container h-32 bg-transparent z-10;
+    @apply fixed top-0 inset-x-0 m-auto z-10;
+  }
+
+  .navbar-content {
+    @apply flex items-center justify-between h-32 bg-transparent;
   }
 
   .bordered-btn {
@@ -49,8 +44,12 @@ import Heart from "src/components/Icons/Heart.astro";
     max-md:border-none max-md:p-0;
   }
 
+  .inverted {
+    @apply text-brand-black;
+  }
+
   .inverted .bordered-btn {
-    @apply bg-brand-gray hover:bg-brand-black text-brand-black hover:text-brand-gray border border-black hover:border-brand-black transition-all duration-300;
+    @apply bg-brand-lightblue hover:bg-brand-black text-brand-black hover:text-brand-lightblue border border-black hover:border-brand-black transition-all duration-300;
   }
 
   .inverted .heart-body {
@@ -82,7 +81,6 @@ import Heart from "src/components/Icons/Heart.astro";
 
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        console.log(entry.intersectionRatio);
         if (entry.isIntersecting) {
           const target = entry.target as HTMLElement;
           const hasLightBg = hasLightBackground(target);

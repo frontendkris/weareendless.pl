@@ -80,7 +80,7 @@ const Mozaic: React.FC = () => {
             row.length - 1 !== index && (
               <div
                 key={`image-${index}`}
-                className="flex justify-center items-center h-14 w-[calc(100%-100px)]"
+                className="flex justify-center items-center h-8 lg:h-14 lg:w-[calc(100%-100px)]"
               >
                 <img
                   src={getRandomImageSource(usedImages)}
@@ -107,7 +107,7 @@ const Mozaic: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-[430px] h-max m-0 text-white font-gothic-720 text-6xl">
+    <div className="flex flex-col gap-4 lg:gap-4 w-full min-w-full lg:w-[430px] h-max m-0 text-white font-gothic-720 text-3xl lg:text-6xl">
       {content}
     </div>
   );

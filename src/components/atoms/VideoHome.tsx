@@ -8,7 +8,6 @@ interface VideoProps {
 const VideoHome: React.FC<VideoProps> = ({ src, isActive }) => {
   const videoHomeHRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastStatus, setLastStatus] = useState(true);
 
   useEffect(() => {
     if (isActive) {
@@ -34,9 +33,9 @@ const VideoHome: React.FC<VideoProps> = ({ src, isActive }) => {
         <source src={src} type="video/mp4" />
         Przepraszamy, twoja przeglądarka nie obsługuje wbudowanych filmów.
       </video>
-      <h1 className="absolute inline h-max w-max left-16 top-0 bottom-0 my-auto text-8xl font-extrabold text-white font-gothic-718">
-        Nieskończoność – <br />
-        tego jeszcze nie było
+      <h1 className="absolute inline h-max w-max left-0 lg:left-16 top-0 bottom-0 my-auto text-[7dvw] font-extrabold text-white font-gothic-718 leading-none">
+        Nieskończoność
+        <br /> – tego jeszcze nie było!
       </h1>
     </div>
   );

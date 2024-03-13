@@ -22,7 +22,6 @@ const VideoSlider: React.FC = () => {
 
   useEffect(() => {
     const queryParameters = new URLSearchParams(window.location.search);
-    console.log(queryParameters);
     if (queryParameters) {
       const slideIndex = parseInt(queryParameters.get("reel") || "0");
       swiperRef.current.slideTo(slideIndex, 300);

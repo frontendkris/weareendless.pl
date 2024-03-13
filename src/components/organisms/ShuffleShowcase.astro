@@ -6,12 +6,14 @@ import { Picture } from "astro:assets";
 ---
 
 <div class="scroll-section container">
-  <div class="flex items-center justify-center gap-20 h-full w-full container">
+  <div
+    class="flex flex-col md:flex-row items-center justify-center gap-20 h-full w-full container"
+  >
     <div class="">
-      <Mozaic client:visible />
+      <Mozaic client:idle />
     </div>
     <div class="">
-      <ImageWrapper className="h-[55dvh] max-w-3xl">
+      <ImageWrapper className="w-full h-auto lg:h-[55dvh] lg:max-w-3xl">
         <Picture
           class="w-full h-full object-cover overflow-hidden"
           src={actorImg}

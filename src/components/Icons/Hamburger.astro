@@ -1,0 +1,27 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props as Props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+  class={`flex lg:hidden w-8 h-8 text-current ${className}`}
+>
+  <path
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d="M4 6h16M4 12h16M4 18h16"></path>
+</svg>
+
+<style>
+  svg path {
+    @apply transition-colors duration-300;
+  }
+</style>
