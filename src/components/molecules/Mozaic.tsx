@@ -107,7 +107,7 @@ const Mozaic: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 lg:gap-4 w-full min-w-full lg:w-[430px] h-max m-0 text-white font-gothic-720 text-3xl lg:text-6xl">
+    <div className="flex flex-col gap-4 lg:gap-4 w-full min-w-full lg:w-[430px] h-max m-0 text-brand-lightblue font-gothic-720 text-3xl lg:text-6xl">
       {content}
     </div>
   );
