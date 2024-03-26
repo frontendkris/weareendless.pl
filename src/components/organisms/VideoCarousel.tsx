@@ -1,17 +1,16 @@
-import React, { useCallback, useEffect, useId, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, {useCallback, useEffect, useId, useState} from "react";
+import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import VideoSlide from "@/components/atoms/VideoSlide";
-import { Navigation, EffectFade, Keyboard } from "swiper/modules";
+import {Navigation, EffectFade, Keyboard} from "swiper/modules";
 import VideoHome from "../atoms/VideoHome";
 import Arrow from "../Icons/Arrow";
 
 const heroUrl: string =
-  "https://res.cloudinary.com/drxgmtvxx/video/upload/v1709655262/yws4fx4lqnaldscwblxz.mp4";
+  "https://res.cloudinary.com/drxgmtvxx/video/upload/v1711483291/gyjo8dmnnvdegydwwnyz.mp4";
 
 const videoUrls: string[] = [
-  "https://res.cloudinary.com/drxgmtvxx/video/upload/v1709609785/djq3clekeepqqwtzlqjq.mp4",
   "https://weareendless.pl/wp-content/uploads/2022/12/ENDLESS_reel_v03_1240x726.mp4",
 ];
 
@@ -51,7 +50,7 @@ const VideoSlider: React.FC = () => {
         spaceBetween={0}
         slidesPerView={1}
         className="swiper-container"
-        keyboard={{ enabled: true }}
+        keyboard={{enabled: true}}
       >
         <SwiperSlide key={`${id}-home-slide`} className="video-slide">
           <VideoHome src={heroUrl} isActive={0 === activeIndex} />
