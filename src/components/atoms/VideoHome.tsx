@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 interface VideoProps {
   src: string;
   isActive: boolean;
 }
 
-const VideoHome: React.FC<VideoProps> = ({ src, isActive }) => {
+const VideoHome: React.FC<VideoProps> = ({src, isActive}) => {
   const videoHomeHRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -33,7 +33,7 @@ const VideoHome: React.FC<VideoProps> = ({ src, isActive }) => {
         <source src={src} type="video/mp4" />
         Przepraszamy, twoja przeglądarka nie obsługuje wbudowanych filmów.
       </video>
-      <h1 className="absolute inline h-max w-max left-0 lg:left-16 top-0 bottom-0 my-auto text-[7dvw] font-extrabold text-brand-lightblue font-gothic-718 leading-none">
+      <h1 className="absolute inline h-max w-max left-0 lg:left-16 top-0 bottom-0 my-auto text-[7dvw] font-extrabold text-black font-gothic-718 leading-none">
         Nieskończoność
         <br /> – tego jeszcze nie było!
       </h1>
