@@ -8,7 +8,7 @@ import VideoHome from "../atoms/VideoHome";
 import Arrow from "../Icons/Arrow";
 
 const heroUrl: string =
-  "https://res.cloudinary.com/drxgmtvxx/video/upload/v1711483291/gyjo8dmnnvdegydwwnyz.mp4";
+  "https://res.cloudinary.com/drxgmtvxx/video/upload/v1711623575/kutbcvnogooxiqtlj2m2.webm";
 
 const videoUrls: string[] = [
   "https://weareendless.pl/wp-content/uploads/2022/12/ENDLESS_reel_v03_1240x726.mp4",
